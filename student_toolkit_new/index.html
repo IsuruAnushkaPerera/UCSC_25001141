@@ -11,8 +11,9 @@
         <div class="nav-container">
             <div class="logo">UCSC Logo Placeholder</div>
             <ul class="nav-links">
-                <li><a href="#gpa-section">GPA Calculator</a></li>
-                <li><a href="#timer-section">Study Timer</a></li>
+                <li><a href="#" data-section="home">Idea Board</a></li>
+                <li><a href="#" data-section="gpa">GPA Calculator</a></li>
+                <li><a href="#" data-section="timer">Study Timer</a></li>
             </ul>
             <div class="dark-mode-container">
                 <label class="switch">
@@ -36,7 +37,19 @@
         </aside>
 
         <main class="content">
-            <section id="gpa-section" class="card">
+            <div id="home-section" class="section active card">
+                <h2>💡 Project Idea Board</h2>
+                <p>Share your creative project ideas and get inspired!</p>
+                <div class="idea-input-container">
+                    <textarea id="idea-input" class="idea-textarea" placeholder="Write your project idea here..."></textarea>
+                    <button id="add-idea-btn" class="btn-primary">Add Idea</button>
+                </div>
+                <div id="ideas-container" class="ideas-grid"></div>
+                <h3>Suggested Project Ideas:</h3>
+                <div id="suggested-ideas" class="ideas-grid"></div>
+            </div>
+
+            <section id="gpa-section" class="section card">
                 <h2>GPA Calculator</h2>
                 <div id="course-list">
                     <div class="course-row">
@@ -61,7 +74,7 @@
                 <div id="gpa-result" class="result">Result: --</div>
             </section>
 
-            <section id="timer-section" class="card">
+            <section id="timer-section" class="section card">
                 <h2>Pomodoro Study Timer</h2>
                 <div class="timer-display" id="timer">25:00</div>
                 <div class="timer-controls">

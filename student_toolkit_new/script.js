@@ -4,6 +4,89 @@ darkModeToggle.addEventListener('change', () => {
     document.body.classList.toggle('dark');
 });
 
+// Navigation Logic
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('.section');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetSection = e.target.getAttribute('data-section');
+        
+        // Hide all sections
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Show target section
+        const activeSection = document.getElementById(targetSection + '-section');
+        if (activeSection) {
+            activeSection.classList.add('active');
+        }
+    });
+});
+
+// Idea Board Logic
+const addIdeaBtn = document.getElementById('add-idea-btn');
+const ideaInput = document.getElementById('idea-input');
+const ideasContainer = document.getElementById('ideas-container');
+const suggestedIdeasContainer = document.getElementById('suggested-ideas');
+
+// Sample suggested ideas
+const suggestedIdeas = [
+    'Mobile app for course recommendations',
+    'Study group finder platform',
+    'Campus event management system',
+    'AI-powered academic advisor chatbot',
+    'Sustainability tracking dashboard for campus',
+    'Peer tutoring marketplace',
+    'Career development portfolio builder',
+    'Student wellness check-in app'
+];
+
+// Initialize with suggested ideas
+function displaySuggestedIdeas() {
+    suggestedIdeasContainer.innerHTML = '';
+    suggestedIdeas.forEach(idea => {
+        const ideaCard = document.createElement('div');
+        ideaCard.className = 'idea-card';
+        ideaCard.innerHTML = `<p>${idea}</p>`;
+        suggestedIdeasContainer.appendChild(ideaCard);
+    });
+}
+
+// Add new idea
+addIdeaBtn.addEventListener('click', () => {
+    const ideaText = ideaInput.value.trim();
+    
+    if (ideaText === '') {
+        alert('Please enter an idea!');
+        return;
+    }
+    
+    const ideaCard = document.createElement('div');
+    ideaCard.className = 'idea-card';
+    ideaCard.innerHTML = `
+        <button class="delete-idea-btn" onclick="this.parentElement.remove()">×</button>
+        <p>${ideaText}</p>
+    `;
+    
+    ideasContainer.insertBefore(ideaCard, ideasContainer.firstChild);
+    ideaInput.value = '';
+    ideaInput.focus();
+});
+
+// Allow Enter key to add idea
+ideaInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        addIdeaBtn.click();
+    }
+});
+
+// Display suggested ideas on load
+displaySuggestedIdeas();
+
 // GPA Calculator Logic
 const courseList = document.getElementById('course-list');
 const addCourseBtn = document.getElementById('add-course');
