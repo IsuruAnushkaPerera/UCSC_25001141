@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCSC Student Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="https://via.placeholder.com/40x40/800000/FFD700?text=U" alt="UCSC Logo" class="nav-logo">
+                <h1 class="logo-text">UCSC Toolkit</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-target="idea-board">Idea Board</a></li>
+                <li><a href="#" class="nav-link" data-target="study-timer">Study Timer</a></li>
+                <li><a href="#" class="nav-link" data-target="gpa-calc">GPA Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Section 1: Idea Board -->
+        <section id="idea-board" class="tab-content active fade-in">
+            <div class="card">
+                <h2>Project Idea Board</h2>
+                <p>Pin your creative thoughts and study milestones here.</p>
+                <div class="idea-input-group">
+                    <input type="text" id="idea-input" placeholder="Type a new idea...">
+                    <button id="add-idea" class="btn primary">Pin Idea</button>
+                </div>
+                <div id="idea-grid" class="idea-grid">
+                    <div class="sticky-note">
+                        <p>Complete UCSC Web Project 🚀</p>
+                    </div>
+                    <div class="sticky-note">
+                        <p>Prepare for Mid-Semester Exams 📚</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Study Timer -->
+        <section id="study-timer" class="tab-content fade-in">
+            <div class="card text-center">
+                <h2>Focus Timer</h2>
+                <div class="timer-display" id="timer">25:00</div>
+                <div class="timer-controls">
+                    <button id="start-btn" class="btn primary">Start</button>
+                    <button id="reset-btn" class="btn reset">Reset</button>
+                </div>
+                <p class="timer-status">Stay focused for 25 minutes!</p>
+            </div>
+        </section>
+
+        <!-- Section 3: GPA Calculator -->
+        <section id="gpa-calc" class="tab-content fade-in">
+            <div class="card">
+                <h2>GPA Calculator</h2>
+                <p>Calculate your weighted GPA based on UCSC grading standards.</p>
+                <div id="course-list">
+                    <div class="course-row">
+                        <input type="text" placeholder="Course Name" class="course-name">
+                        <input type="number" placeholder="Credits" class="course-credits" min="1">
+                        <select class="course-grade">
+                            <option value="4.0">A / A+</option>
+                            <option value="3.7">A-</option>
+                            <option value="3.3">B+</option>
+                            <option value="3.0">B</option>
+                            <option value="2.7">B-</option>
+                            <option value="2.3">C+</option>
+                            <option value="2.0">C</option>
+                            <option value="1.7">C-</option>
+                            <option value="1.3">D+</option>
+                            <option value="1.0">D</option>
+                            <option value="0.0">E / F</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button id="add-course" class="btn secondary">Add Course</button>
+                    <button id="calculate-gpa" class="btn primary">Calculate GPA</button>
+                </div>
+                <div id="gpa-result" class="result-box hidden">
+                    Your GPA: <span id="gpa-value">0.00</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
